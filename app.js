@@ -1,5 +1,10 @@
 // ===== Storage =====
 const STORAGE_KEY = "miejsca_z_martyna_v1";
+const viewHome = document.getElementById("viewHome");
+const homeMap = document.getElementById("homeMap");
+const homeList = document.getElementById("homeList");
+const homeAdd = document.getElementById("homeAdd");
+
 
 function loadPlaces() {
   try {
@@ -47,7 +52,12 @@ let places = loadPlaces();
 // ===== Tabs =====
 function setActiveTab(tab) {
   [tabMap, tabList, tabAdd].forEach(b => b.classList.remove("active"));
-  [viewMap, viewList, viewAdd].forEach(v => v.classList.add("hidden"));
+  [viewHome, viewMap, viewList, viewAdd].forEach(v => v.classList.add("hidden"));
+
+  if (tab === "home") {
+    viewHome.classList.remove("hidden");
+    return;
+  }
 
   if (tab === "map") {
     tabMap.classList.add("active");
@@ -64,9 +74,15 @@ function setActiveTab(tab) {
   }
 }
 
+
 tabMap.addEventListener("click", () => setActiveTab("map"));
 tabList.addEventListener("click", () => setActiveTab("list"));
 tabAdd.addEventListener("click", () => setActiveTab("add"));
+
+homeMap.addEventListener("click", () => setActiveTab("map"));
+homeList.addEventListener("click", () => setActiveTab("list"));
+homeAdd.addEventListener("click", () => setActiveTab("add"));
+
 
 // ===== Map (Leaflet) =====
 let map;
@@ -333,3 +349,4 @@ clearBtn.addEventListener("click", () => {
 // ===== Init =====
 initMap();
 renderList();
+setActiveTab("home");
