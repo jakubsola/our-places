@@ -51,7 +51,6 @@ let places = loadPlaces();
 
 // ===== Tabs =====
 function setActiveTab(tab) {
-  [tabMap, tabList, tabAdd].forEach(b => b.classList.remove("active"));
   [viewHome, viewMap, viewList, viewAdd].forEach(v => v.classList.add("hidden"));
 
   if (tab === "home") {
@@ -60,19 +59,22 @@ function setActiveTab(tab) {
   }
 
   if (tab === "map") {
-    tabMap.classList.add("active");
     viewMap.classList.remove("hidden");
     setTimeout(() => map?.invalidateSize(), 50);
+    return;
   }
+
   if (tab === "list") {
-    tabList.classList.add("active");
     viewList.classList.remove("hidden");
+    return;
   }
+
   if (tab === "add") {
-    tabAdd.classList.add("active");
     viewAdd.classList.remove("hidden");
+    return;
   }
 }
+
 
 
 //tabMap.addEventListener("click", () => setActiveTab("map"));
