@@ -4,6 +4,8 @@ const viewHome = document.getElementById("viewHome");
 const homeMap = document.getElementById("homeMap");
 const homeList = document.getElementById("homeList");
 const homeAdd = document.getElementById("homeAdd");
+const goHome = document.getElementById("goHome");
+goHome.addEventListener("click", () => setActiveTab("home"));
 
 
 function loadPlaces() {
