@@ -19,9 +19,6 @@ function savePlaces(places) {
 }
 
 // ===== UI refs =====
-//const tabMap = document.getElementById("tabMap");
-//const tabList = document.getElementById("tabList");
-//const tabAdd = document.getElementById("tabAdd");
 
 const viewMap = document.getElementById("viewMap");
 const viewList = document.getElementById("viewList");
@@ -74,12 +71,6 @@ function setActiveTab(tab) {
     return;
   }
 }
-
-
-
-//tabMap.addEventListener("click", () => setActiveTab("map"));
-//tabList.addEventListener("click", () => setActiveTab("list"));
-//tabAdd.addEventListener("click", () => setActiveTab("add"));
 
 homeMap.addEventListener("click", () => setActiveTab("map"));
 homeList.addEventListener("click", () => setActiveTab("list"));
