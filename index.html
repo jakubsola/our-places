@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Miejsca z Martyną</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+</head>
+<body>
+  <header class="header">
+    <h1>Miejsca z Martyną</h1>
+
+    <nav class="tabs">
+      <button id="tabMap" class="tab active">Mapa</button>
+      <button id="tabList" class="tab">Lista</button>
+      <button id="tabAdd" class="tab">Dodaj</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- MAP -->
+    <section id="viewMap" class="view">
+      <div class="hint">Kliknij pinezkę, żeby zobaczyć szczegóły.</div>
+      <div id="map" class="map"></div>
+    </section>
+
+    <!-- LIST -->
+    <section id="viewList" class="view hidden">
+      <div class="listHeader">
+        <input id="searchInput" class="input" placeholder="Szukaj po nazwie / adresie..." />
+        <select id="sortSelect" class="select">
+          <option value="newest">Najnowsze</option>
+          <option value="ratingDesc">Ocena: malejąco</option>
+          <option value="ratingAsc">Ocena: rosnąco</option>
+          <option value="nameAsc">Nazwa: A→Z</option>
+          <option value="nameDesc">Nazwa: Z→A</option>
+        </select>
+      </div>
+
+      <div id="placesList" class="cards"></div>
+      <div id="emptyList" class="empty hidden">Brak miejsc — dodaj pierwsze w zakładce „Dodaj”.</div>
+    </section>
+
+    <!-- ADD -->
+    <section id="viewAdd" class="view hidden">
+      <form id="addForm" class="form">
+        <div class="row">
+          <label class="label">Nazwa miejsca *</label>
+          <input id="name" class="input" required placeholder="np. Kopiec Kościuszki" />
+        </div>
+
+        <div class="row">
+          <label class="label">Adres *</label>
+          <input id="address" class="input" required placeholder="np. al. Waszyngtona 1, Kraków" />
+          <div class="miniHint">Adres zamienimy na współrzędne (geokodowanie) i dodamy pinezkę na mapie.</div>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label class="label">Ocena (1–10) *</label>
+            <input id="rating" class="input" type="number" min="1" max="10" step="1" required />
+          </div>
+          <div>
+            <label class="label">Komentarz (opcjonalnie)</label>
+            <input id="note" class="input" placeholder="np. super widok o zachodzie" />
+          </div>
+        </div>
+
+        <div class="row two">
+          <div>
+            <label class="label">Zdjęcie (URL, opcjonalnie)</label>
+            <input id="photoUrl" class="input" placeholder="https://..." />
+          </div>
+          <div>
+            <label class="label">albo plik (opcjonalnie)</label>
+            <input id="photoFile" class="input" type="file" accept="image/*" />
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">Dodaj miejsce</button>
+          <button id="seedBtn" class="btn" type="button">Wstaw przykładowe</button>
+          <button id="clearBtn" class="btn danger" type="button">Wyczyść wszystko</button>
+        </div>
+
+        <div id="formMsg" class="msg"></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Leaflet -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <script src="app.js"></script>
+</body>
+</html>

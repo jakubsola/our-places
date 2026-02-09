@@ -1,0 +1,214 @@
+:root{
+  --bg:#0b0c10;
+  --card:#12141b;
+  --muted:#a5adbb;
+  --text:#e9edf3;
+  --accent:#6aa8ff;
+  --danger:#ff6a6a;
+  --border: rgba(255,255,255,.10);
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: radial-gradient(1200px 800px at 20% -10%, rgba(106,168,255,.25), transparent 60%),
+              radial-gradient(900px 700px at 110% 10%, rgba(255,106,106,.18), transparent 55%),
+              var(--bg);
+  color:var(--text);
+}
+
+.header{
+  padding:18px 16px 10px;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  backdrop-filter: blur(8px);
+  background: rgba(11,12,16,.75);
+  z-index: 10;
+}
+.header h1{
+  margin:0 0 12px;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+
+.tabs{
+  display:flex;
+  gap:10px;
+}
+.tab{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.15s transform, .15s background, .15s border;
+}
+.tab:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
+.tab.active{ border-color: rgba(106,168,255,.55); background: rgba(106,168,255,.12); }
+
+.container{
+  padding:16px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.view{ margin-top: 12px; }
+.hidden{ display:none; }
+
+.hint{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.map{
+  height: 68vh;
+  min-height: 420px;
+  border-radius: 16px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+.listHeader{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+.input, .select{
+  width: 100%;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  outline:none;
+}
+.select{ max-width: 240px; }
+#searchInput{ flex:1; min-width: 220px; }
+
+.cards{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap:12px;
+}
+.card{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  border-radius:16px;
+  padding:12px;
+  overflow:hidden;
+}
+.cardTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+.title{
+  font-weight:700;
+  margin:0;
+  font-size:16px;
+}
+.addr{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+.badge{
+  border:1px solid rgba(106,168,255,.45);
+  background: rgba(106,168,255,.12);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  white-space:nowrap;
+}
+.note{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--text);
+  opacity:.92;
+}
+.photo{
+  margin-top:10px;
+  width:100%;
+  border-radius:12px;
+  border:1px solid var(--border);
+  display:block;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.cardActions{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+.btn{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.btn.primary{
+  border-color: rgba(106,168,255,.55);
+  background: rgba(106,168,255,.14);
+}
+.btn.danger{
+  border-color: rgba(255,106,106,.55);
+  background: rgba(255,106,106,.12);
+}
+.btn.small{ padding:8px 10px; font-size:13px; }
+
+.form{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  border-radius:16px;
+  padding:14px;
+}
+.row{ margin-bottom:12px; }
+.row.two{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+}
+@media (max-width: 720px){
+  .row.two{ grid-template-columns: 1fr; }
+}
+.label{
+  display:block;
+  margin-bottom:6px;
+  font-size:13px;
+  color:var(--muted);
+}
+.miniHint{
+  margin-top:6px;
+  font-size:12px;
+  color:var(--muted);
+}
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.msg{
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+}
+.empty{
+  color:var(--muted);
+  margin-top:12px;
+  padding:12px;
+  border:1px dashed var(--border);
+  border-radius:16px;
+}
