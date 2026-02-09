@@ -295,3 +295,12 @@ body{
   color: var(--muted);
   font-size: 12px;
 }
+.header{ display:flex; align-items:center; gap:10px; }
+.homeBtn{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+  padding:8px 10px;
+  border-radius: 12px;
+  cursor:pointer;
+}
