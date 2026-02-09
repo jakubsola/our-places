@@ -26,76 +26,111 @@
     </nav>
   </header>
 
-  <main class="container">
-    <!-- MAP -->
-    <section id="viewMap" class="view">
-      <div class="hint">Kliknij pinezkę, żeby zobaczyć szczegóły.</div>
-      <div id="map" class="map"></div>
-    </section>
-
-    <!-- LIST -->
-    <section id="viewList" class="view hidden">
-      <div class="listHeader">
-        <input id="searchInput" class="input" placeholder="Szukaj po nazwie / adresie..." />
-        <select id="sortSelect" class="select">
-          <option value="newest">Najnowsze</option>
-          <option value="ratingDesc">Ocena: malejąco</option>
-          <option value="ratingAsc">Ocena: rosnąco</option>
-          <option value="nameAsc">Nazwa: A→Z</option>
-          <option value="nameDesc">Nazwa: Z→A</option>
-        </select>
+<main class="container">
+  <!-- HOME -->
+  <section id="viewHome" class="view">
+    <div class="hero">
+      <div class="heroText">
+        <h2>Nasza mapa wspomnień</h2>
+        <p>Zapisujcie miejsca, do których chcecie wracać. Mapa, lista i szybkie dodawanie — wszystko w jednym miejscu.</p>
       </div>
 
-      <div id="placesList" class="cards"></div>
-      <div id="emptyList" class="empty hidden">Brak miejsc — dodaj pierwsze w zakładce „Dodaj”.</div>
-    </section>
+      <div class="grid">
+        <button id="homeMap" class="tile">
+          <div class="tileIcon">🗺️</div>
+          <div class="tileTitle">Mapa</div>
+          <div class="tileDesc">Pinezki na mapie Polski + podgląd szczegółów.</div>
+        </button>
 
-    <!-- ADD -->
-    <section id="viewAdd" class="view hidden">
-      <form id="addForm" class="form">
-        <div class="row">
-          <label class="label">Nazwa miejsca *</label>
-          <input id="name" class="input" required placeholder="np. Kopiec Kościuszki" />
+        <button id="homeList" class="tile">
+          <div class="tileIcon">📋</div>
+          <div class="tileTitle">Lista</div>
+          <div class="tileDesc">Wszystkie miejsca, oceny, zdjęcia i wyszukiwarka.</div>
+        </button>
+
+        <button id="homeAdd" class="tile accent">
+          <div class="tileIcon">➕</div>
+          <div class="tileTitle">Dodaj</div>
+          <div class="tileDesc">Dodaj nowe miejsce po nazwie i adresie.</div>
+        </button>
+      </div>
+
+      <div class="tinyInfo">
+        Tip: kliknij „Dodaj”, żeby wrzucić nowe miejsce, a potem zobacz je na mapie.
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="viewMap" class="view hidden">
+    <div class="hint">Kliknij pinezkę, żeby zobaczyć szczegóły.</div>
+    <div id="map" class="map"></div>
+  </section>
+
+  <!-- LIST -->
+  <section id="viewList" class="view hidden">
+    <div class="listHeader">
+      <input id="searchInput" class="input" placeholder="Szukaj po nazwie / adresie..." />
+      <select id="sortSelect" class="select">
+        <option value="newest">Najnowsze</option>
+        <option value="ratingDesc">Ocena: malejąco</option>
+        <option value="ratingAsc">Ocena: rosnąco</option>
+        <option value="nameAsc">Nazwa: A→Z</option>
+        <option value="nameDesc">Nazwa: Z→A</option>
+      </select>
+    </div>
+
+    <div id="placesList" class="cards"></div>
+    <div id="emptyList" class="empty hidden">Brak miejsc — dodaj pierwsze w zakładce „Dodaj”.</div>
+  </section>
+
+  <!-- ADD -->
+  <section id="viewAdd" class="view hidden">
+    <form id="addForm" class="form">
+      <div class="row">
+        <label class="label">Nazwa miejsca *</label>
+        <input id="name" class="input" required placeholder="np. Kopiec Kościuszki" />
+      </div>
+
+      <div class="row">
+        <label class="label">Adres *</label>
+        <input id="address" class="input" required placeholder="np. al. Waszyngtona 1, Kraków" />
+        <div class="miniHint">Adres zamienimy na współrzędne i dodamy pinezkę na mapie.</div>
+      </div>
+
+      <div class="row two">
+        <div>
+          <label class="label">Ocena (1–10) *</label>
+          <input id="rating" class="input" type="number" min="1" max="10" step="1" required />
         </div>
-
-        <div class="row">
-          <label class="label">Adres *</label>
-          <input id="address" class="input" required placeholder="np. al. Waszyngtona 1, Kraków" />
-          <div class="miniHint">Adres zamienimy na współrzędne (geokodowanie) i dodamy pinezkę na mapie.</div>
+        <div>
+          <label class="label">Komentarz (opcjonalnie)</label>
+          <input id="note" class="input" placeholder="np. super widok o zachodzie" />
         </div>
+      </div>
 
-        <div class="row two">
-          <div>
-            <label class="label">Ocena (1–10) *</label>
-            <input id="rating" class="input" type="number" min="1" max="10" step="1" required />
-          </div>
-          <div>
-            <label class="label">Komentarz (opcjonalnie)</label>
-            <input id="note" class="input" placeholder="np. super widok o zachodzie" />
-          </div>
+      <div class="row two">
+        <div>
+          <label class="label">Zdjęcie (URL, opcjonalnie)</label>
+          <input id="photoUrl" class="input" placeholder="https://..." />
         </div>
-
-        <div class="row two">
-          <div>
-            <label class="label">Zdjęcie (URL, opcjonalnie)</label>
-            <input id="photoUrl" class="input" placeholder="https://..." />
-          </div>
-          <div>
-            <label class="label">albo plik (opcjonalnie)</label>
-            <input id="photoFile" class="input" type="file" accept="image/*" />
-          </div>
+        <div>
+          <label class="label">albo plik (opcjonalnie)</label>
+          <input id="photoFile" class="input" type="file" accept="image/*" />
         </div>
+      </div>
 
-        <div class="actions">
-          <button class="btn primary" type="submit">Dodaj miejsce</button>
-          <button id="seedBtn" class="btn" type="button">Wstaw przykładowe</button>
-          <button id="clearBtn" class="btn danger" type="button">Wyczyść wszystko</button>
-        </div>
+      <div class="actions">
+        <button class="btn primary" type="submit">Dodaj miejsce</button>
+        <button id="seedBtn" class="btn" type="button">Wstaw przykładowe</button>
+        <button id="clearBtn" class="btn danger" type="button">Wyczyść wszystko</button>
+      </div>
 
-        <div id="formMsg" class="msg"></div>
-      </form>
-    </section>
-  </main>
+      <div id="formMsg" class="msg"></div>
+    </form>
+  </section>
+</main>
+
 
   <!-- Leaflet -->
   <script
